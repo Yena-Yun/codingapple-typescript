@@ -73,3 +73,44 @@ function 만들함수(x: { subject: string | string[] }) {
 	}
 }
 
+type 학생1 = { name: string, age: number };
+type 학생2 = { name: string, age: number };
+
+type Students = 학생1 & 학생2;
+
+let Heroine : Students = { name: '미애', age: 16 };
+
+
+type MyType = {
+	color?: string,
+	size: number,
+	readonly position: number[]
+}
+
+let 테스트: MyType = {
+	size: 123,
+	position: [1,2,3]
+}
+
+type User = {
+	name: string,
+	phone: number,
+	email?: string,
+}
+
+type Adult = {
+	teen: boolean
+}
+
+type NewUser = User & Adult;
+
+let 회원가입정보: User = {
+	name: '예나',
+	phone: 1000,
+}
+
+let 미성년자니: NewUser = {
+	name: '뷔',
+	phone: 2525,
+	teen: true
+}
