@@ -1,5 +1,5 @@
 let 회원들: (number | string)[] = [1, '2', 3];
-let 오브젝트: { a: string | number } = { a: '123' };
+let 오브젝트: { x: string | number } = { x: '123' };
 
 function 함수(x?: string): void {
 	if (x) {
@@ -35,10 +35,10 @@ function 결혼가능여부(money: number, house: boolean, charm: string) : stri
 
 console.log(결혼가능여부(1000000, true, '상'));
 
-function 클리닝함수(a: (string | number)[]) {
+function 클리닝함수(x: (string | number)[]) {
 	let 클리닝완료된거: number[] = [];
 
-	// for (let x of a) {
+	// for (let x of x) {
 	// 	if (typeof x === 'string') {
 	// 		클리닝완료된거.push(parseInt(x));
 	// 	} else {
@@ -46,7 +46,7 @@ function 클리닝함수(a: (string | number)[]) {
 	// 	}
 	// }
 
-	a.forEach((b) => {
+	x.forEach((b) => {
 		if (typeof b === 'string') {
 			클리닝완료된거.push(parseFloat(b));
 		} else {
@@ -114,3 +114,54 @@ let 미성년자니: NewUser = {
 	phone: 2525,
 	teen: true
 }
+
+function 놀자(x: '가위' | '바위' | '보'): ('가위' | '바위' | '보')[] {
+	return ['가위'];
+}
+
+놀자('가위');
+
+type Member = {
+	name: string,
+	age: number,
+	plusOne: (x: number) => number,
+	changeName: () => void
+}
+
+let 회원정보 :Member = {
+	name: 'kim',
+	age: 30,
+	plusOne(x) {
+		return x + 1;
+	},
+	changeName: () =>  {
+		console.log('안녕');
+	}
+}
+
+type CutType = (x: string) => string;
+
+let cutZero :CutType = function (x) {
+	let result = x.replace(/^0+/, '');
+	return result;
+}
+
+type RemoveType = (x: string) => number;
+
+let removeDash :RemoveType = function (x) {
+	let result = x.replace(/-/g, '');
+	return parseInt(result);
+}
+
+// type 야호 = (a: string, b: object, c: object) => string;
+
+type 함수타입1 = (a: string) => string;
+type 함수타입2 = (a: string) => number;
+
+function 무야호(phone :string, cut :함수타입1, remove :함수타입2) {
+	let result = cut(phone);
+	let result2 = remove(result);
+	console.log(result2);
+}
+
+무야호('010-1111-2222', cutZero, removeDash);
